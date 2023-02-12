@@ -14,10 +14,10 @@ class MyThead(threading.Thread):
 # threading.Thread(aaa)
 
 x=MyThead()
-x=MyThead()
-x=MyThead()
-x=MyThead()
-x=MyThead()
+# x=MyThead()
+# x=MyThead()
+# x=MyThead()
+# x=MyThead()
 x.start()
 print("done")
 

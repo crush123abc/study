@@ -9,23 +9,28 @@ I/O密集型：程序需要频繁进行输入输出操作，爬虫就是典型�
 守护进程：setDaemon(True)，默认为False，主线程死亡子线程随着主线程死亡，需要在start()方法前使用
 线程阻塞：join(),等待子线程任务结束,需要在start()方法后使用
 
-
 """
-def run():
+
+x = 0
+
+
+def run(parm):
     time.sleep(1)
-    print('你好')
-    time.sleep(3)
+    # 以f开头，包含的{}里面可以使用变量，print(f'你好{x}----')
+    print('你好----')
+    # time.sleep(3)
 
 
+# 开始时间
 start_time = time.time()
-threads = []#用来存储子线程
+threads = []  # 用来存储子线程
 # run()
-for i in range(10):
-    #子线程列表添加（多线程方法安排子线程任务）
-    threads.append(threading.Thread(target=run))
+for i in range(100):
+    # 子线程列表添加（多线程方法安排子线程任务）
+    threads.append(threading.Thread(target=run, args=(i,)))
 for i in threads:
-    i.setDaemon(True)
-    #子线程正式运行
+    # i.setDaemon(True)
+    # 子线程正式运行
     i.start()
 # for i in threads:
 #     #等待子线程任务结束
@@ -48,6 +53,7 @@ print('done')
 end_time = time.time()
 print(end_time - start_time)
 
+#
 # def do_something(n):
 #     if n <= 1:
 #         return n
